@@ -18,7 +18,7 @@ The following tests are included here (in Test_cases.robot).  A test setup file 
 
 The last test was to include verifying that the changes made to the feed actually showed up in the export.  
 Either there is a potential bug here, or I don't understand how Architect is supposed to work (likely!) because
-the changes I made to the "Stops" file never show up in the exported feed.
+the changes I made to the "Stops" component never seem to show up in the exported feed.
 
 A video capture of the test session is also included (TransLoc_Robot_Session.mov).  Sorry about the shaded area,
 couldn't figure that one out!
