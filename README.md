@@ -20,4 +20,5 @@ The last test was to include verifying that the changes made to the feed actuall
 Either there is a potential bug here, or I don't understand how Architect is supposed to work (likely!) because
 the changes I made to the "Stops" file never show up in the exported feed.
 
-A video capture of the test session is also included (TransLoc_Robot_Session.mov)
+A video capture of the test session is also included (TransLoc_Robot_Session.mov).  Sorry about the shaded area,
+couldn't figure that one out!

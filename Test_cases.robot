@@ -62,7 +62,7 @@ Export this GTFS feed to local file system
 
     # Then Verify exported feed stop component contains the added stop
 
-    # Potential bug?  The exported feed doesn't seem to contain new changes  'stops.txt'?
+    # Potential bug?  The exported feed doesn't seem to contain new changes in 'stops.txt'?
     # The above test step not implemented
 
 
