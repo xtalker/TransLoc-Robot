@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190830 11:13:02.968" generator="Robot 3.1.1 (Python 2.7.16 on darwin)">
+<suite source="/Users/bsteinbeiser/Projects/TransLoc-Robot/Test_cases.robot" id="s1" name="Test cases">
+<kw type="setup" name="Open browser and start" library="Test_Setup">
+<tags>
+<tag>common</tag>
+</tags>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${SELENIUM_SPEED}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:03.444" starttime="20190830 11:13:03.444"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${ROOT_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:03.445" level="INFO">Opening browser 'firefox' to base url 'https://login.stage.transloc.com/login/?next=https://architect.stage.transloc.com/'.</msg>
+<status status="PASS" endtime="20190830 11:13:08.053" starttime="20190830 11:13:03.444"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${BROWSER_WINDOW_WIDTH}</arg>
+<arg>${BROWSER_WINDOW_HEIGHT}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:08.306" starttime="20190830 11:13:08.054"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5 s</arg>
+<arg>reason=Delay to start the screen recorder</arg>
+</arguments>
+<msg timestamp="20190830 11:13:13.308" level="INFO">Slept 5 seconds</msg>
+<msg timestamp="20190830 11:13:13.308" level="INFO">Delay to start the screen recorder</msg>
+<status status="PASS" endtime="20190830 11:13:13.308" starttime="20190830 11:13:08.306"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:13.308" starttime="20190830 11:13:03.444"></status>
+</kw>
+<test id="s1-t1" name="Log in to the Architect application and verify that test feed is available">
+<kw name="Given I'm logged in as" library="Test_Setup">
+<tags>
+<tag>common</tag>
+</tags>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Forgot your password?</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:13.527" starttime="20190830 11:13:13.312"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=username</arg>
+<arg>${userid}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:13.527" level="INFO">Typing text 'qa_user_02' into text field 'id=username'.</msg>
+<status status="PASS" endtime="20190830 11:13:14.186" starttime="20190830 11:13:13.527"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=password</arg>
+<arg>${passwd}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:14.186" level="INFO">Typing text 'EhTAs7K4hJB^' into text field 'id=password'.</msg>
+<status status="PASS" endtime="20190830 11:13:14.852" starttime="20190830 11:13:14.186"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>Log in</arg>
+</arguments>
+<msg timestamp="20190830 11:13:14.853" level="INFO">Clicking button 'Log in'.</msg>
+<status status="PASS" endtime="20190830 11:13:17.024" starttime="20190830 11:13:14.853"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>QA User</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:18.995" starttime="20190830 11:13:17.024"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:18.995" starttime="20190830 11:13:13.311"></status>
+</kw>
+<kw name="Then I can see that this test GTFS feed is availalble:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>GTFS Import (Aug 23, 2019)</arg>
+</arguments>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${feed name}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:19.435" level="INFO">Current page contains text 'GTFS Import (Aug 23, 2019)'.</msg>
+<status status="PASS" endtime="20190830 11:13:19.436" starttime="20190830 11:13:18.996"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:19.436" starttime="20190830 11:13:18.996"></status>
+</kw>
+<tags>
+<tag>critical</tag>
+</tags>
+<status status="PASS" endtime="20190830 11:13:19.436" critical="yes" starttime="20190830 11:13:13.309"></status>
+</test>
+<test id="s1-t2" name="Open the default GTFS feed and verify that all components exist">
+<kw type="setup" name="I can open the feed named:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>GTFS Import (Aug 23, 2019)</arg>
+</arguments>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${feed_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:19.858" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759'.</msg>
+<status status="PASS" endtime="20190830 11:13:19.858" starttime="20190830 11:13:19.439"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${feed_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:19.859" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759'.</msg>
+<status status="PASS" endtime="20190830 11:13:20.730" starttime="20190830 11:13:19.858"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name:name</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:20.944" starttime="20190830 11:13:20.731"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${feed_name}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:21.369" level="INFO">Current page contains text 'GTFS Import (Aug 23, 2019)'.</msg>
+<status status="PASS" endtime="20190830 11:13:21.369" starttime="20190830 11:13:20.945"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:21.369" starttime="20190830 11:13:19.438"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>routes</arg>
+<arg>Routes are equivalent to "Lines" in public transportation systems.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:21.371" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/routes</msg>
+<status status="PASS" endtime="20190830 11:13:21.371" starttime="20190830 11:13:21.371"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:21.792" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/routes'.</msg>
+<status status="PASS" endtime="20190830 11:13:21.793" starttime="20190830 11:13:21.371"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:21.793" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/routes'.</msg>
+<status status="PASS" endtime="20190830 11:13:22.668" starttime="20190830 11:13:21.793"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:22.885" starttime="20190830 11:13:22.668"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:24.886" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:24.886" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:24.886" starttime="20190830 11:13:22.885"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:25.103" starttime="20190830 11:13:24.887"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:25.103" starttime="20190830 11:13:21.370"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>stops</arg>
+<arg>Individual locations where vehicles pick up or drop off passengers.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:25.105" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/stops</msg>
+<status status="PASS" endtime="20190830 11:13:25.105" starttime="20190830 11:13:25.104"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:25.548" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/stops'.</msg>
+<status status="PASS" endtime="20190830 11:13:25.548" starttime="20190830 11:13:25.105"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:25.549" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/stops'.</msg>
+<status status="PASS" endtime="20190830 11:13:26.622" starttime="20190830 11:13:25.548"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:26.839" starttime="20190830 11:13:26.623"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:28.839" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:28.840" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:28.840" starttime="20190830 11:13:26.839"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:29.063" starttime="20190830 11:13:28.840"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:29.063" starttime="20190830 11:13:25.104"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>patterns</arg>
+<arg>Patterns are templates for trips that share stop sequences and shapes within a route.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:29.065" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/patterns</msg>
+<status status="PASS" endtime="20190830 11:13:29.065" starttime="20190830 11:13:29.064"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:29.483" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/patterns'.</msg>
+<status status="PASS" endtime="20190830 11:13:29.483" starttime="20190830 11:13:29.065"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:29.484" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/patterns'.</msg>
+<status status="PASS" endtime="20190830 11:13:30.363" starttime="20190830 11:13:29.483"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:30.573" starttime="20190830 11:13:30.364"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:32.575" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:32.576" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:32.576" starttime="20190830 11:13:30.573"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:32.789" starttime="20190830 11:13:32.576"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:32.790" starttime="20190830 11:13:29.063"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>calendars</arg>
+<arg>A calendar is a range of dates during which a trip is available.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:32.791" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/calendars</msg>
+<status status="PASS" endtime="20190830 11:13:32.791" starttime="20190830 11:13:32.791"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:33.233" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/calendars'.</msg>
+<status status="PASS" endtime="20190830 11:13:33.233" starttime="20190830 11:13:32.791"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:33.234" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/calendars'.</msg>
+<status status="PASS" endtime="20190830 11:13:34.109" starttime="20190830 11:13:33.234"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:34.323" starttime="20190830 11:13:34.109"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:36.325" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:36.325" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:36.325" starttime="20190830 11:13:34.323"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:36.539" starttime="20190830 11:13:36.326"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:36.539" starttime="20190830 11:13:32.790"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>trips</arg>
+<arg>A Trip is a time-specific journey taken by vehicles through Stops.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:36.540" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/trips</msg>
+<status status="PASS" endtime="20190830 11:13:36.540" starttime="20190830 11:13:36.540"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:37.001" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/trips'.</msg>
+<status status="PASS" endtime="20190830 11:13:37.001" starttime="20190830 11:13:36.541"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:37.003" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/trips'.</msg>
+<status status="PASS" endtime="20190830 11:13:38.020" starttime="20190830 11:13:37.002"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:38.235" starttime="20190830 11:13:38.020"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:40.237" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:40.237" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:40.237" starttime="20190830 11:13:38.235"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:40.454" starttime="20190830 11:13:40.237"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:40.454" starttime="20190830 11:13:36.539"></status>
+</kw>
+<kw name="Navigate to each component of the feed and verify:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>blocks</arg>
+<arg>Blocks are a sequence of trips taken by a single vehicle.</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/${component_name}</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:40.456" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/blocks</msg>
+<status status="PASS" endtime="20190830 11:13:40.456" starttime="20190830 11:13:40.456"></status>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:40.886" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759/blocks'.</msg>
+<status status="PASS" endtime="20190830 11:13:40.886" starttime="20190830 11:13:40.457"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:40.887" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/blocks'.</msg>
+<status status="PASS" endtime="20190830 11:13:41.806" starttime="20190830 11:13:40.886"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${component_text}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:42.022" starttime="20190830 11:13:41.807"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:13:44.024" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:13:44.024" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:13:44.024" starttime="20190830 11:13:42.022"></status>
+</kw>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:44.239" starttime="20190830 11:13:44.025"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:44.239" starttime="20190830 11:13:40.455"></status>
+</kw>
+<tags>
+<tag>critical</tag>
+</tags>
+<status status="PASS" endtime="20190830 11:13:44.240" critical="yes" starttime="20190830 11:13:19.437"></status>
+</test>
+<test id="s1-t3" name="Add a new stop to this GTFS feed">
+<kw name="Given I'm at the stops component for this feed:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>GTFS Import (Aug 23, 2019)</arg>
+</arguments>
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>Go to the feed start page and open this feed</arg>
+<arg>${feed_name}</arg>
+</arguments>
+<kw name="Go to the feed start page and open this feed">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>${feed_name}</arg>
+</arguments>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${ROOT_URL}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:44.243" level="INFO">Opening url 'https://login.stage.transloc.com/login/?next=https://architect.stage.transloc.com/'</msg>
+<status status="PASS" endtime="20190830 11:13:45.260" starttime="20190830 11:13:44.242"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>QA User</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:45.896" starttime="20190830 11:13:45.260"></status>
+</kw>
+<kw name="Run Keyword" library="BuiltIn">
+<doc>Executes the given keyword with the given arguments.</doc>
+<arguments>
+<arg>I can open the feed named:</arg>
+<arg>${feed_name}</arg>
+</arguments>
+<kw name="I can open the feed named:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>${feed_name}</arg>
+</arguments>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>${feed_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:46.319" level="INFO">Current page contains link '/qainterviewtwo/service-periods/2759'.</msg>
+<status status="PASS" endtime="20190830 11:13:46.320" starttime="20190830 11:13:45.898"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${feed_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:46.320" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759'.</msg>
+<status status="PASS" endtime="20190830 11:13:47.190" starttime="20190830 11:13:46.320"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name:name</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:47.401" starttime="20190830 11:13:47.191"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${feed_name}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:47.827" level="INFO">Current page contains text 'GTFS Import (Aug 23, 2019)'.</msg>
+<status status="PASS" endtime="20190830 11:13:47.828" starttime="20190830 11:13:47.402"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:47.828" starttime="20190830 11:13:45.897"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:47.828" starttime="20190830 11:13:45.897"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:47.828" starttime="20190830 11:13:44.242"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:47.828" starttime="20190830 11:13:44.241"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/stops</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:47.829" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/stops</msg>
+<status status="PASS" endtime="20190830 11:13:47.830" starttime="20190830 11:13:47.829"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:47.830" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/stops'.</msg>
+<status status="PASS" endtime="20190830 11:13:48.923" starttime="20190830 11:13:47.830"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Individual locations where vehicles pick up or drop off passengers.</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:49.137" starttime="20190830 11:13:48.924"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:49.137" starttime="20190830 11:13:44.241"></status>
+</kw>
+<kw name="Then I can add a new stop with this data:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>${STOP_NAME}</arg>
+<arg>${STOP_LAT}</arg>
+<arg>${STOP_LONG}</arg>
+<arg>${STOP_DESCR}</arg>
+</arguments>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${FEED_LINK}/stops/new</arg>
+</arguments>
+<assign>
+<var>${component_link}</var>
+</assign>
+<msg timestamp="20190830 11:13:49.139" level="INFO">${component_link} = /qainterviewtwo/service-periods/2759/stops/new</msg>
+<status status="PASS" endtime="20190830 11:13:49.139" starttime="20190830 11:13:49.138"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>${component_link}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:49.140" level="INFO">Clicking link '/qainterviewtwo/service-periods/2759/stops/new'.</msg>
+<status status="PASS" endtime="20190830 11:13:50.172" starttime="20190830 11:13:49.139"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Save</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:50.385" starttime="20190830 11:13:50.172"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:name</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:50.386" level="INFO">Typing text '1 Test Ruckersville' into text field 'name:name'.</msg>
+<status status="PASS" endtime="20190830 11:13:51.254" starttime="20190830 11:13:50.386"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:position.latitude</arg>
+<arg>${lat}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:51.255" level="INFO">Typing text '38.233245078253596' into text field 'name:position.latitude'.</msg>
+<status status="PASS" endtime="20190830 11:13:52.062" starttime="20190830 11:13:51.254"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:position.longitude</arg>
+<arg>${long}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:52.063" level="INFO">Typing text '-78.3690562458496' into text field 'name:position.longitude'.</msg>
+<status status="PASS" endtime="20190830 11:13:53.003" starttime="20190830 11:13:52.062"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:description</arg>
+<arg>${descr}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:53.005" level="INFO">Typing text 'This is a stop created for testing purposes' into text field 'name:description'.</msg>
+<status status="PASS" endtime="20190830 11:13:54.106" starttime="20190830 11:13:53.004"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>Save</arg>
+</arguments>
+<msg timestamp="20190830 11:13:54.107" level="INFO">Clicking button 'Save'.</msg>
+<status status="PASS" endtime="20190830 11:13:55.237" starttime="20190830 11:13:54.106"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:55.238" starttime="20190830 11:13:49.137"></status>
+</kw>
+<kw name="And I can verify that this stop has been created:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>${STOP_NAME}</arg>
+</arguments>
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" endtime="20190830 11:13:55.452" starttime="20190830 11:13:55.239"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:55.697" starttime="20190830 11:13:55.453"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:13:55.697" starttime="20190830 11:13:55.238"></status>
+</kw>
+<tags>
+<tag>critical</tag>
+</tags>
+<status status="PASS" endtime="20190830 11:13:55.698" critical="yes" starttime="20190830 11:13:44.240"></status>
+</test>
+<test id="s1-t4" name="Export this GTFS feed to local file system">
+<kw name="Given I can export this feed:">
+<tags>
+<tag>local</tag>
+</tags>
+<arguments>
+<arg>GTFS Import (Aug 23, 2019)</arg>
+</arguments>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${ROOT_URL}</arg>
+</arguments>
+<msg timestamp="20190830 11:13:55.701" level="INFO">Opening url 'https://login.stage.transloc.com/login/?next=https://architect.stage.transloc.com/'</msg>
+<status status="PASS" endtime="20190830 11:13:56.783" starttime="20190830 11:13:55.700"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>QA User</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:57.434" starttime="20190830 11:13:56.783"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://div/span[contains(text(),\'${name}\')]/parent::div/following-sibling::div/button</arg>
+</arguments>
+<msg timestamp="20190830 11:13:57.435" level="INFO">Clicking element 'xpath://div/span[contains(text(),'GTFS Import (Aug 23, 2019)')]/parent::div/following-sibling::div/button'.</msg>
+<status status="PASS" endtime="20190830 11:13:58.109" starttime="20190830 11:13:57.435"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>xpath://li[contains(text(),'Export')]</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:13:58.321" starttime="20190830 11:13:58.109"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://li[contains(text(),'Export')]</arg>
+</arguments>
+<msg timestamp="20190830 11:13:58.323" level="INFO">Clicking element 'xpath://li[contains(text(),'Export')]'.</msg>
+<status status="PASS" endtime="20190830 11:13:58.996" starttime="20190830 11:13:58.322"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>Export Successful</arg>
+</arguments>
+<status status="PASS" endtime="20190830 11:14:01.285" starttime="20190830 11:13:58.996"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>${DEMO_SLEEP_TIME}</arg>
+<arg>reason=For demo purposes</arg>
+</arguments>
+<msg timestamp="20190830 11:14:03.286" level="INFO">Slept 2 seconds</msg>
+<msg timestamp="20190830 11:14:03.286" level="INFO">For demo purposes</msg>
+<status status="PASS" endtime="20190830 11:14:03.287" starttime="20190830 11:14:01.285"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${ROOT_URL}</arg>
+</arguments>
+<msg timestamp="20190830 11:14:03.287" level="INFO">Opening url 'https://login.stage.transloc.com/login/?next=https://architect.stage.transloc.com/'</msg>
+<status status="PASS" endtime="20190830 11:14:04.287" starttime="20190830 11:14:03.287"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:14:04.287" starttime="20190830 11:13:55.700"></status>
+</kw>
+<tags>
+<tag>critical</tag>
+</tags>
+<status status="PASS" endtime="20190830 11:14:04.288" critical="yes" starttime="20190830 11:13:55.699"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20190830 11:14:05.056" starttime="20190830 11:14:04.289"></status>
+</kw>
+<status status="PASS" endtime="20190830 11:14:05.056" starttime="20190830 11:13:02.969"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="4">critical</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Test cases" pass="4">Test cases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
